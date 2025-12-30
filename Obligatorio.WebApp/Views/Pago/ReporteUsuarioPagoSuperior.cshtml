@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Obligatorio.LogicaAplicacion.Dtos.Usuarios.UsuarioDtoListado>
+
+@{
+    ViewData["Title"] = "Reporte de Usuarios con Pagos Superiores";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        <div class="card shadow-sm border-0 rounded">
+            <div class="card-body">
+                <h2 class="text-center mb-4 text-uppercase fw-semibold">Usuarios con Pagos Superiores</h2>
+
+
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.First().Nombre)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Apellido)</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Rol)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Rol)</td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+
+                </table>
+                @if (Model.Count() == 0)
+                {
+                    <div class="alert alert-info text-center" role="alert">
+                        No se encontraron usuarios con pagos superiores al monto especificado.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

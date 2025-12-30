@@ -1,0 +1,28 @@
+﻿@model Obligatorio.LogicaAplicacion.Dtos.TiposDeGasto.TiposDeGastoDtoListado
+
+@{
+    ViewData["Title"] = "Detalle de Tipo de Gasto";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 rounded">
+            <div class="card-body">
+                <h2 class="text-center mb-4 text-uppercase fw-semibold">Detalle de Tipo de Gasto</h2>
+
+                <dl class="row">
+                    <dt class="col-sm-4 fw-bold">ID</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Id)</dd>
+
+                    <dt class="col-sm-4 fw-bold">Descripción</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Descripcion)</dd>
+                </dl>
+
+                <div class="d-flex justify-content-between mt-4">
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-outline-secondary" })
+                    <a asp-action="Index" class="btn btn-outline-primary">Volver al listado</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model Obligatorio.LogicaAplicacion.Dtos.Usuarios.UsuarioDtoListado
+
+@{
+    ViewData["Title"] = "Eliminar Usuario";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0 rounded">
+            <div class="card-body">
+                <h2 class="text-center mb-4 text-uppercase fw-semibold text-danger">Eliminar Usuario</h2>
+
+                <h5 class="text-center mb-3">¿Estás seguro que deseas eliminar este usuario?</h5>
+
+                <dl class="row">
+                    <dt class="col-sm-4 fw-bold">ID</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Id)</dd>
+
+                    <dt class="col-sm-4 fw-bold">Nombre</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Nombre)</dd>
+
+                    <dt class="col-sm-4 fw-bold">Apellido</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Apellido)</dd>
+
+                    <dt class="col-sm-4 fw-bold">Contraseña</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Contrasenia)</dd>
+
+                    <dt class="col-sm-4 fw-bold">Email</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+                    <dt class="col-sm-4 fw-bold">Rol</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Rol)</dd>
+                </dl>
+
+                <form asp-action="Delete" class="mt-4">
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

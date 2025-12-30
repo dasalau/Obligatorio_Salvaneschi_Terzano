@@ -1,0 +1,86 @@
+﻿@using Obligatorio.LogicaAplicacion.Dtos.MetodosDePago
+@using Obligatorio.LogicaAplicacion.Dtos.TiposDeGasto
+@model Obligatorio.LogicaAplicacion.Dtos.Pagos.PagoRecurrenteDtoAlta
+
+@{
+    ViewData["Title"] = "Nuevo Pago Recurrente";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0 rounded">
+            <div class="card-body">
+                <h2 class="text-center mb-4 text-uppercase fw-semibold">Nuevo Pago Recurrente</h2>
+
+                <form asp-action="CreatePagoRecurrente">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Descripcion" class="form-label fw-bold">Descripcion</label>
+                        <input asp-for="Descripcion" class="form-control" />
+                        <span asp-validation-for="Descripcion" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="MontoPago" class="form-label fw-bold">Monto de pago</label>
+                        <input asp-for="MontoPago" class="form-control" />
+                        <span asp-validation-for="MontoPago" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TipoGastoId" class="form-label fw-bold">Tipo de gasto</label>
+                        <select asp-for="TipoGastoId" class="form-select">
+                            <option value="0">Seleccione un tipo de gasto</option>
+                            @foreach (TiposDeGastoDtoListado item in ViewBag.TipoGastos)
+                            {
+                                <option value="@item.Id">@item.Descripcion</option>
+                            }
+                        </select>
+                        <span asp-validation-for="TipoGastoId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="MetodoPagoId" class="form-label fw-bold">Metodo de pago</label>
+                        <select asp-for="MetodoPagoId" class="form-select">
+                            <option value="0">Seleccione un método de pago</option>
+                            @foreach (MetodosDePagoDtoListado item in ViewBag.MetodosPago)
+                            {
+                                <option value="@item.Id">@item.Metodo</option>
+                            }
+                        </select>
+                        <span asp-validation-for="MetodoPagoId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="FechaDesde" class="form-label fw-bold">Fecha comienzo de pago</label>
+                        <input asp-for="FechaDesde" class="form-control" />
+                        <span asp-validation-for="FechaDesde" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="FechaHasta" class="form-label fw-bold">Fecha fin de pago</label>
+                        <input asp-for="FechaHasta" class="form-control" />
+                        <span asp-validation-for="FechaHasta" class="text-danger"></span>
+                    </div>
+
+                    <input type="hidden" asp-for="UsuarioId" value="@ViewBag.UsuarioId" />
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-primary">Crear Pago</button>
+                    </div>
+                    <p>@ViewBag.Mensaje</p>
+                </form>
+
+                <div class="mt-3 text-center">
+                    <a asp-action="Index" class="text-decoration-none">← Volver al listado</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

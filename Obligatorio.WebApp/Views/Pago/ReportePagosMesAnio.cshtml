@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Obligatorio.LogicaAplicacion.Dtos.Pagos.PagoDtoReporteMensual>
+
+@{
+    ViewData["Title"] = "ReportePagosMesAnio";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        <div class="card shadow-sm border-0 rounded">
+            <div class="card-body">
+                <h2 class="text-center mb-4 text-uppercase fw-semibold">Reporte de Pagos Mensuales</h2>
+
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.First().Id)</th>
+                            <th>Descripción</th>
+                            <th>Monto de pago</th>
+                            <th>Tipo de pago</th>
+                            <th>Metodo de pago</th>
+                            <th>@Html.DisplayNameFor(model => model.First().Saldo)</th>
+                            <!-- <th class="text-center">Acciones</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MontoPago)</td>
+                                <td>@Html.DisplayFor(modelItem => item.DescripcionTipoPago)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MetodoPago)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Saldo)</td>
+                            </tr>
+                        }
+
+
+@*                         @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="9" class="text-center text-muted">No se encontraron pagos para el mes y año especificados.</td>
+                            </tr>
+                        } *@
+                    </tbody>
+                </table>
+
+                @if (!Model.Any())
+                {
+                    <div class="alert alert-info text-center mt-3" role="alert">
+                        No se encontraron pagos para el mes y año especificados.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
